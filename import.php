@@ -1,15 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db="stock";
-// Create connection
-$conn = new mysqli($servername, $username, $password,$db);
+include "navbar.php";
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 $catname="computer";
 $subname="mouse";
 $sql="SELECT * FROM $catname WHERE subcat='$subname'";
