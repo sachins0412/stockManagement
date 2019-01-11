@@ -1,6 +1,3 @@
-<?php
-	include 'navbar.php';
-	?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,15 +16,18 @@ background: url(bg.jpg) no-repeat center center/cover;
 }
 @keyframes exp
 {
-	0%{color:rgba(0,0,0,0); margin-right:-50px; }
-	10%{color:rgba(255,255,255,1); margin-right:0px; }
-	100%{color:rgba(255,255,255,1); margin-right:0px; }
+	0%{color:rgba(0,0,0,0); margin-left:-150px; }
+	10%{color:rgba(255,255,255,1); margin-left:0px; }
+	100%{color:rgba(255,255,255,1); margin-left:0px; }
 }
 	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-
 <body>
+	<?php
+	include 'navbar.php';
 	
+	?>
     <div class="" style="padding-top:;" >
     	<div class="bg1" style="height: 40em; width: 100%; ">
     		
@@ -48,14 +48,14 @@ background: url(bg.jpg) no-repeat center center/cover;
 	WHERE table_schema = 'stock' AND TABLE_NAME NOT LIKE 'users'";
 	$result=mysqli_query($conn,$sql);
 	?>
-
-  <select class="form-control" id="type" name="category">
-  	<option value="" disabled selected>Category</option>
+	<form method="POST">
+  <select class="form-control" id="sell" name="category" onchange="myfun(this.value)">
+  	 <option disabled selected>select category</option>
   	<?php
 	if(mysqli_num_rows($result)>0){
 		while($row= mysqli_fetch_row($result)){
 			?>
-    <option value=<?php $row[0]?>><?php echo $row[0];?></option>
+    <option value=<?php echo $row[0]?>><?php echo $row[0]?></option>
     	<?php }?>
     
   </select>	<?php }?>
@@ -63,18 +63,30 @@ background: url(bg.jpg) no-repeat center center/cover;
   <div class="form-group" style="width:40%;">
   <label for="sel1" style="font-family:bold; color: white;">Select subcategory:</label>
 
-	
-
-  <select class="form-control" id="size" name="category">
-  	<option value="" disabled selected>Sub-Category</option>
-  	    
+  <select class="form-control" id="sell2" name="Subcategory">
+  	 <option value="" disabled selected>Sub-category</option>
+    
   </select>	
-</div><div class="container">
- <a class="btn btn-outline-light btn-lg" style=" " href="#" title="view">View</a>
- <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="" title="import">Import/Export</a> <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="#" title="Delete">Delete</a>
+</div>
+<script type="text/javascript">
+	function myfun(datavalue){
+		$.ajax({
+			url: 'subcatindex.php',
+			type:'POST',
+			data:{datapost : datavalue},
+			success: function(result){
+					$('#sell2').html(result);
+			}
+
+		});
+	}
+</script>
+<div class="container">
+ <a class="btn btn-outline-light btn-lg" style=" " href="view.php" title="view">View</a>
+ <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="import.php" title="import">Import/Export</a> <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="delete.php" title="Delete">Delete</a>
                
 </div></div>
-
+</form>
     	</div>
     </div>
 </body>
