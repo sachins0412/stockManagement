@@ -1,10 +1,10 @@
 <?php
 include "navbar.php";
 $catname="computer";
-$subname= "";
+$subname= "RAM";
 $sql1="SELECT * FROM $catname";
 $result1=mysqli_query($conn,$sql1);
-$sql2="SELECT * FROm $catname WHERE subcat='$subname'";
+$sql2="SELECT * FROM $catname WHERE subcat='$subname'";
 $result2=mysqli_query($conn,$sql2);
 ?>
 <html>

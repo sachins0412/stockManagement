@@ -21,7 +21,7 @@ background: url(bg.jpg) no-repeat center center/cover;
 	100%{color:rgba(255,255,255,1); margin-left:0px; }
 }
 	</style>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
 </head>
 <body>
 	<?php
