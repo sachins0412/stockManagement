@@ -1,7 +1,7 @@
 <?php
 include "navbar.php";
-$catname="computer";
-$subname= "RAM";
+$catname=$_GET['cat'];
+$subname= $_GET['subcat'];
 $sql1="SELECT * FROM $catname";
 $result1=mysqli_query($conn,$sql1);
 $sql2="SELECT * FROM $catname WHERE subcat='$subname'";

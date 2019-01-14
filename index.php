@@ -63,7 +63,7 @@ background: url(bg.jpg) no-repeat center center/cover;
   <div class="form-group" style="width:40%;">
   <label for="sel1" style="font-family:bold; color: white;">Select subcategory:</label>
 
-  <select class="form-control" id="sell2" name="Subcategory">
+  <select class="form-control" id="sell2" name="Subcategory" onchange="myfun2()">
   	 <option value="" disabled selected>Sub-category</option>
     
   </select>	
@@ -77,13 +77,26 @@ background: url(bg.jpg) no-repeat center center/cover;
 			success: function(result){
 					$('#sell2').html(result);
 			}
-
+			
 		});
+	myfun2();
 	}
+	function myfun2(){
+		var catvalue=document.getElementById('sell').value;
+		var subcatvalue=document.getElementById('sell2').value;
+		var url = "view.php?cat="+catvalue+"&subcat="+subcatvalue;
+		document.getElementById("1").href=url;
+		var url = "import.php?cat="+catvalue+"&subcat="+subcatvalue;
+		document.getElementById("2").href=url;
+		var url = "deleted.php?cat="+catvalue+"&subcat="+subcatvalue;
+		document.getElementById("3").href=url;
+	}
+
 </script>
+
 <div class="container">
- <a class="btn btn-outline-light btn-lg" style=" " href="view.php" title="view">View</a>
- <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="import.php" title="import">Import/Export</a> <a class="btn btn-outline-light btn-lg" style="margin-left: 1em;" href="delete.php" title="Delete">Delete</a>
+ <a class="btn btn-outline-light btn-lg" id="1" style=" " href="" title="view">View</a>
+ <a class="btn btn-outline-light btn-lg" id="2" style="margin-left: 1em;" href="" title="import">Import/Export</a> <a class="btn btn-outline-light btn-lg" id="3" style="margin-left: 1em;" href="" title="Delete">Delete</a>
                
 </div></div>
 </form>

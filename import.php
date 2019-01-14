@@ -1,8 +1,8 @@
 <?php
 include "navbar.php";
 
-$catname="computer";
-$subname="mouse";
+$catname=$_GET['cat'];
+$subname=$_GET['subcat'];
 $sql="SELECT * FROM $catname WHERE subcat='$subname'";
 $result=mysqli_query($conn,$sql);
 

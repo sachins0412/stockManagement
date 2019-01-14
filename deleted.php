@@ -1,7 +1,7 @@
 <?php
 include "navbar.php";
-$catname="ration";
-$subname="rice";
+$catname=$_GET['cat'];
+$subname=$_GET['subcat'];
 $sql2="DELETE FROM $catname WHERE subcat='$subname'";
 
 $sql1="DROP TABLE $catname";

@@ -12,9 +12,12 @@ if ($conn->connect_error) {
 $catname=$_POST['datapost'];	
 $sql="SELECT subcat FROM $catname";
 $result=mysqli_query($conn,$sql);
+?>
+<option value="" disabled selected>Sub-category</option>
+<?php
 while($row=mysqli_fetch_row($result)){
 								?>
-								<option> <?php echo $row[0];?></option>
+								<option value=<?php echo $row[0];?>> <?php echo $row[0];?></option>
 								<?php
 									}
 
