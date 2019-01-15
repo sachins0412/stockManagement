@@ -1,4 +1,5 @@
 <?php
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -20,8 +21,9 @@ $sql="SELECT * FROM users WHERE username='$uname' AND password='$pw'";
 $result = mysqli_query($conn,$sql);
 $count= mysqli_num_rows($result);
 if($count>0)
-{
-	header('Location: index.php?user='.$uname);
+{	session_start();
+		$_SESSION["user"]=$uname;
+		header('Location: index.php');
 }
 else
 {
